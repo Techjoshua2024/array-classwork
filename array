@@ -1,0 +1,39 @@
+#These are the steps below 
+
+ 1:Break the array into two parts:
+
+The part from the start to the position we want to rotate.
+The part from that position to the end.
+
+2:Rejoin these parts in reverse order:
+
+The part from the position to the end comes first.
+The part from the start to the position goes to the end.
+
+
+This is the code below: 
+
+
+def rotLeft(a, d):
+    # Step 1: Get the number of elements in the array
+    n = len(a)
+    
+    # Step 2: If we need to rotate more times than the array length,
+    # we can simplify this by rotating only the remainder (modulus operation)
+    d = d % n
+    
+    # Step 3: Create two parts of the array
+    # Part 1: from d to the end of the array
+    # Part 2: from the start of the array to d
+    part1 = a[d:]  # from d to the end
+    part2 = a[:d]  # from the start to d
+    
+    # Step 4: Join the two parts together in the new order
+    rotated_array = part1 + part2
+    
+    return rotated_array
+
+# Example usage
+a = [1, 2, 3, 4, 5]
+d = 4
+print(rotLeft(a, d))  # Output: [5, 1, 2, 3, 4]
